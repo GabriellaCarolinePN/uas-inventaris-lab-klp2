@@ -6,10 +6,43 @@
     <title>Admin Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #FAAF78, #FBEAFF, #48BEC8);
+            background-size: 400% 400%;
+            animation: gradientAnimation 6s ease infinite;
+            color: #333;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .login-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            background-color: #48BEC8;
+            border-color: #48BEC8;
+        }
+        .btn-primary:hover {
+            background-color: #399BA3;
+            border-color: #399BA3;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 5px rgba(72, 190, 200, 0.8);
+            border-color: #48BEC8;
+        }
+        .password-toggle {
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;">
+        <div class="card login-card p-4" style="width: 100%; max-width: 400px;">
             <h3 class="text-center mb-4">Admin Login</h3>
             <form>
                 <!-- Username -->
@@ -18,27 +51,41 @@
                     <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
                 </div>
                 <!-- Password -->
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                </div>
-                <!-- Remember Me -->
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        <span class="input-group-text bg-white password-toggle" id="togglePassword">
+                            <i class="bi bi-eye-slash"></i>
+                        </span>
+                    </div>
                 </div>
                 <!-- Login Button -->
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary text-white">Login</button>
                 </div>
             </form>
-            <!-- Footer -->
-            <div class="text-center mt-4">
-                <small>Forgot your password? <a href="#">Click here</a></small>
-            </div>
         </div>
     </div>
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Script for Hide/Unhide Password -->
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        });
+    </script>
 </body>
 </html>
