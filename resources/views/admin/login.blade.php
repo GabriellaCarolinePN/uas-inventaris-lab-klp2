@@ -6,6 +6,7 @@
     <title>Admin Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             background: linear-gradient(135deg, #FAAF78, #FBEAFF, #48BEC8);
@@ -44,17 +45,18 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card login-card p-4" style="width: 100%; max-width: 400px;">
             <h3 class="text-center mb-4">Admin Login</h3>
-            <form>
+            <form method="POST" action="{{ route('login.post') }}">
+                @csrf
                 <!-- Username -->
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email" required>
                 </div>
                 <!-- Password -->
                 <div class="mb-3 position-relative">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
                         <span class="input-group-text bg-white password-toggle" id="togglePassword">
                             <i class="bi bi-eye-slash"></i>
                         </span>
@@ -87,5 +89,14 @@
             }
         });
     </script>
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
 </body>
 </html>
