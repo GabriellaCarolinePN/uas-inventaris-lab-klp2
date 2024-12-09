@@ -1,0 +1,141 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FBEAFF;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #48BEC8;
+    padding: 20px;
+    position: fixed;
+}
+
+.sidebar h4 {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.sidebar a.active, 
+.sidebar a:hover {
+    background: #FAAF78;
+    color: white;
+}
+
+/* Main Content Styles */
+.flex-grow-1 {
+    margin-left: 250px;
+    padding: 40px;
+}
+
+.profile-dropdown .btn {
+    background: #FAAF78;
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.profile-dropdown .dropdown-menu {
+    min-width: 150px;
+    background: white;
+    border: 1px solid #FAAF78;
+}
+
+.profile-dropdown .dropdown-item {
+    color: #343a40;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.profile-dropdown .dropdown-item:hover {
+    background: #FBEAFF;
+    color: #48BEC8;
+}
+
+/* Welcome Card */
+.welcome-card {
+    background: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #48BEC8;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.welcome-card .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #48BEC8;
+}
+
+.welcome-card .card-text {
+    font-size: 16px;
+    color: #343a40;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #FAAF78;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FAAF78;
+}
+
+.feature-card .card-text {
+    font-size: 16px;
+    color: #343a40;
+}
+
+/* Button & Notification Styles */
+button {
+    background: #FAAF78;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #48BEC8;
+}
+
