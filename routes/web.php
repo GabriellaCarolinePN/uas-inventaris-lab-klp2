@@ -23,14 +23,14 @@ Route::get('/form-peminjaman', function () {
 Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
-    });
+    })->name('dashboard');
     Route::get('/admin/inventoris', function () {
         return view('admin.inventoris');
-    });
+    })->name('inventoris');
     Route::get('/admin/riwayat-peminjaman', function () {
         return view('admin.riwayat');
-    });
-    Route::get('/admin/riwayat-peminjaman/data-peminjam', function () {
+    })->name('riwayat');
+    Route::get('/admin/data-peminjam', function () {
         return view('admin.datapeminjam');
-    });
+    })->name('data-peminjam');
 });
