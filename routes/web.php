@@ -3,11 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 
-Route::get('/', function () {
-    return view('user.menu');
-});
+Route::get('/', [UserController::class, 'index'])->name('home');
 
 // Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -17,7 +16,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //Form Peminjaman User
 Route::get('/form-peminjaman', function () {
     return view('user.form');
-});
+})->name('form');
 
 //Akses admin
 Route::middleware(AdminMiddleware::class)->group(function () {

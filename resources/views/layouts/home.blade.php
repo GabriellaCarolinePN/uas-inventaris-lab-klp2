@@ -21,10 +21,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto custom-nav-center">
                 <li class="nav-item">
-                    <a class="nav-link custom-link" href="#">Home</a>
+                    <a class="nav-link custom-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link custom-link" href="">Pemesanan</a>
+                    <a class="nav-link custom-link" href="{{ route('form') }}">Pemesanan</a>
                 </li>
             </ul>
             

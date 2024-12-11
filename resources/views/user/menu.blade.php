@@ -4,14 +4,6 @@
 <!-- Carousel Section -->
 <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        @php
-            $images = [
-            asset('images/coba.jpg'), 
-            asset('images/coba2.jpg'), 
-            asset('images/banner3.jpg')
-        ];
-        @endphp
-
         @foreach($images as $index => $image)
             <div class="carousel-item @if($index == 0) active @endif banner" style="background: url('{{ $image }}') center/cover;">
                 <div class="overlay"></div>
@@ -46,7 +38,7 @@
 
     <div class="text-center mt-4">
         <!-- Ubah ke URL Dummy -->
-        <a href="https://www.example.com/pemesanan" class="btn btn-custom btn-lg">Pesan Sekarang</a>
+        <a href="{{ route('form') }}" class="btn btn-custom btn-lg">Pesan Sekarang</a>
     </div>
 </div>
 
