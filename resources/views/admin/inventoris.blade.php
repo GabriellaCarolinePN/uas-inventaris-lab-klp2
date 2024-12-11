@@ -6,4 +6,5 @@
 
 @section('content')
     <h1>Invetoris<h1>
+        
 @endsection

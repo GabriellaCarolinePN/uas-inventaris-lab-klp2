@@ -1,0 +1,91 @@
+/* Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Wrapper untuk konten utama dan footer */
+.wrapper {
+    min-height: 100vh;  /* Layar penuh */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Konten Utama */
+.content {
+    flex: 1;  /* Isi area yang tersisa */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navbar Styles */
+.custom-navbar {
+    background-color: #faaf78;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.custom-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Menu Tengah */
+.custom-nav-center {
+    flex: 1;  /* Isi area tengah */
+    justify-content: center;
+}
+
+.nav-link.custom-link {
+    color: white;
+    font-size: 16px;
+    margin-right: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link.custom-link:hover {
+    color: #48BEC8;
+    font-weight: bold;
+}
+
+/* Tombol Login */
+.btn-login {
+    background-color: #48BEC8;
+    color: white;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+    background-color: #399BA3;
+    color: #f8f8f8;
+}
+
+/* Footer Styles */
+.custom-footer {
+    background-color: #48BEC8;
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+    text-align: center;
+    margin-top: auto;  /* Stuck di bawah */
+}
+
+.custom-footer p {
+    margin: 0;
+}

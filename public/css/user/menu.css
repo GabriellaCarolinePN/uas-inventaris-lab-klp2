@@ -1,0 +1,60 @@
+/* Carousel Style */
+.banner {
+    height: 60vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Overlay Effect */
+.banner .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Transparansi gelap */
+    z-index: 1;
+}
+
+.carousel-caption {
+    z-index: 2;
+}
+
+/* Typing Text */
+.text-typing {
+    color: #faaf78 !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Title */
+.section-title {
+    color: #48bec8;
+    text-transform: uppercase;
+}
+
+/* Terms Box */
+.terms-box {
+    background: #faaf78;
+    color: white;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    line-height: 1.8;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+/* Custom Button */
+.btn-custom {
+    background: #48bec8;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+}
+
+.btn-custom:hover {
+    background: #faaf78;
+    color: white;
+}

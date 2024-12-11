@@ -1,0 +1,105 @@
+/* Tab Content Styles */
+.tab-content {
+  margin: auto;
+  padding: 10px; /* Tambahkan ruang di dalam tab-content */
+  background: #F9F9F9; /* Warna latar belakang agar lebih kontras */
+ 
+  border-radius: 5px; /* Membulatkan sudut */
+  margin-top: 10px; /* Tambahkan jarak di atas tab-content */
+}
+
+/* Font Styles */
+h1 {
+  padding-top: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+/* Navbar Pills */
+.nav-pills {
+  display: flex;
+  justify-content: center;
+  gap: 5px; /* Jarak antar item navbar */
+  max-width: var(--navbar-width, 600px); /* Lebar navbar fleksibel */
+  padding: 10px 0; /* Spasi di sekitar navbar */
+  margin: 0 auto; /* Tengah halaman */
+}
+
+.nav-pills .nav-link {
+  background: #FAAF78;
+  color: #F9F9F9;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px; /* Tambahkan padding agar lebih rapi */
+  transition: 0.3s;
+  text-align: center;
+  width: 100%;
+}
+
+.nav-pills .nav-link.active {
+  background: #48BEC8;
+  color: #F9F9F9;
+}
+
+/* Form Container */
+form {
+  max-width: 600px; /* Batas lebar form */
+  margin: 0 auto; /* Tengah halaman */
+}
+
+
+/* Form Styles */
+.form-outline {
+  position: relative;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-control:focus {
+  border-color: #48BEC8;
+  outline: none;
+  box-shadow: 0 0 5px rgba(72, 190, 200, 0.5);
+}
+
+/* Select Styles */
+.form-select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-select:focus {
+  border-color: #48BEC8;
+  outline: none;
+  box-shadow: 0 0 5px rgba(72, 190, 200, 0.5);
+}
+
+/* Submit Button */
+.btn-primary {
+  background: #FAAF78;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #E99B67;
+}
