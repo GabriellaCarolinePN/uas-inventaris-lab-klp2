@@ -8,8 +8,8 @@
             <div class="carousel-item @if($index == 0) active @endif banner" style="background: url('{{ $image }}') center/cover;">
                 <div class="overlay"></div>
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-white">
-                    <h1 class="display-4 fw-bold text-typing">
-                        <span id="typing-text"></span>
+                    <h1 class="display-4 fw-bold text-highlight">
+                        Selamat Datang di Sistem Informasi Peminjaman Inventori Lab
                     </h1>
                 </div>
             </div>
@@ -43,25 +43,3 @@
 </div>
 
 @endsection
-
-<!-- Typing Text Script -->
-@push('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const textArray = ["Selamat Datang Admin"];
-        let i = 0, j = 0, typingSpeed = 100;
-
-        function typeEffect() {
-            if (i < textArray.length) {
-                if (j < textArray[i].length) {
-                    document.getElementById("typing-text").innerHTML += textArray[i].charAt(j);
-                    j++;
-                    setTimeout(typeEffect, typingSpeed);
-                }
-            }
-        }
-        typeEffect();
-    });
-</script>
-@endpush
-

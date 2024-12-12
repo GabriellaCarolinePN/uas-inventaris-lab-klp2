@@ -1,6 +1,6 @@
 /* Carousel Style */
 .banner {
-    height: 60vh;
+    height: 70vh;
     position: relative;
     background-size: cover;
     background-position: center;
@@ -19,13 +19,20 @@
 
 .carousel-caption {
     z-index: 2;
+    text-align: center;
+    transform: translateY(-50%);
+    top: 50%;
 }
 
-/* Typing Text */
-.text-typing {
-    color: #faaf78 !important;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+.text-highlight {
+    color: white;
+    font-size: 3rem;
 }
+
+.text-highlight:nth-child(even) {
+    color: yellow;
+}
+
 
 /* Section Title */
 .section-title {
@@ -35,18 +42,22 @@
 
 /* Terms Box */
 .terms-box {
-    background: #faaf78;
-    color: white;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    line-height: 1.8;
-    padding: 1.5rem;
-    border-radius: 8px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 70%;
+    background: #f4f1ed; 
+    color: #333; 
+    font-size: 1rem; /* Ukuran font lebih kecil */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Bayangan lebih halus */
+    line-height: 1.6; /* Tinggi garis lebih proporsional */
+    border-left: 5px solid #faaf78;
+    border-radius: 10px; /* Sudut lebih bulat untuk estetika */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efek interaksi */
 }
 
 /* Custom Button */
 .btn-custom {
-    background: #48bec8;
+    background: #faaf78;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -55,6 +66,6 @@
 }
 
 .btn-custom:hover {
-    background: #faaf78;
+    background: #48bec8;
     color: white;
 }
