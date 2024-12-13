@@ -1,0 +1,50 @@
+.title {
+    color: #faaf78;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Form Styles */
+.equipment-form .form-control {
+    border: 2px solid #faaf78;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.equipment-form .form-label {
+    color: #48bec8;
+    font-weight: bold;
+}
+
+.submit-btn {
+    background-color: #faaf78;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #48bec8;
+}
+
+.cancel-btn {
+    background-color: #d3d3d3;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.cancel-btn:hover {
+    background-color: #b0b0b0;
+}
