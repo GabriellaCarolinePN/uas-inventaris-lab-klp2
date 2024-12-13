@@ -54,7 +54,7 @@
             <tbody>
                 @foreach ($peminjaman as $key => $row)
                 <tr>
-                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $row->id }}</td>
                     <td>{{ $row->nama_peminjam }}</td>
                     <td>{{ $row->jenis_peminjam }}</td>
                     <td>{{ $row->nip_nim }}</td>

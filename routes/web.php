@@ -41,3 +41,6 @@ Route::middleware(AdminMiddleware::class)->group(function () {
 
 //Akses admin -> tabel peminjam
 Route::get('/datapeminjam', [AdminController::class, 'datapeminjam']);
+
+//Akses admin -> tabel inventori
+Route::get('/admin/inventoris', [AdminController::class, 'inventoris'])->name('inventoris');

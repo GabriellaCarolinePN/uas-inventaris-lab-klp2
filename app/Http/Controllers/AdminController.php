@@ -13,4 +13,10 @@ class AdminController extends Controller
         return view('admin.datapeminjam', compact('peminjaman'));
     }
 
+    public function inventoris()
+    {
+        $inventoris = \App\Models\Inventaris::all(); 
+        return view('admin.inventoris', compact('inventoris'));
+    }
+
 }
