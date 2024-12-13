@@ -28,11 +28,6 @@ class AuthController extends Controller
             return back()->with('error', 'User tidak ditemukan!')->withInput(['email' => null]);
         }
 
-        // Check apakah email sesuai dengan user pertama
-        if ($useradmin['email'] !== $admin->email) {
-            return back()->with('error', 'Email tidak sesuai dengan user pertama!')->withInput(['email' => null]);
-        }
-
         // Cek apakah password cocok menggunakan Hash::check
         if (!Hash::check($useradmin['password'], $admin->password)) {
             return back()->with('error', 'Password salah!')->withInput($request->only('email'));

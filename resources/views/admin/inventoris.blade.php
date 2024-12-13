@@ -8,7 +8,7 @@
         <div class="container my-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold">Inventori Peminjaman Lab</h2>
-                <button class="btn btn-add">+ Add Inventori</button>
+                <a class="btn btn-add" href="{{ route('forminventoris') }}">+ Add Inventori</a>
             </div>
         
             <div class="table-responsive">

@@ -23,9 +23,15 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+
+    //Inventori
     Route::get('/admin/inventoris', function () {
         return view('admin.inventoris');
     })->name('inventoris');
+    Route::get('/admin/inventoris/form', function () {
+        return view('admin.forminventori');})
+    ->name('forminventoris');
+
     Route::get('/admin/riwayat-peminjaman', function () {
         return view('admin.riwayat');
     })->name('riwayat');
