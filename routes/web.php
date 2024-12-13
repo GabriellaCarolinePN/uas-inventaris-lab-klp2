@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [UserController::class, 'index'])->name('home');
 
@@ -35,7 +36,8 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin/riwayat-peminjaman', function () {
         return view('admin.riwayat');
     })->name('riwayat');
-    Route::get('/admin/data-peminjam', function () {
-        return view('admin.datapeminjam');
-    })->name('data-peminjam');
+    Route::get('/admin/data-peminjam', [AdminController::class, 'datapeminjam'])->name('data-peminjam');
 });
+
+//Akses admin -> tabel peminjam
+Route::get('/datapeminjam', [AdminController::class, 'datapeminjam']);
