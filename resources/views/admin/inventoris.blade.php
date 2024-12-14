@@ -29,18 +29,14 @@
         <div class="container my-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold">Inventori Peminjaman Lab</h2>
-                <a class="btn btn-add" href="{{ route('forminventoris') }}">+ Add Inventori</a>
+                <a class="btn btn-add" href="{{ route('forminventori') }}">+ Add Inventori</a>
             </div>
 
-            @if (@session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
-        
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead class="table-header">
                         <tr>
-                            <th>ID</th>
+                            <th>No.</th>
                             <th>Kode Alat</th>
                             <th>Nama Alat</th>
                             <th>Deskripsi</th>
@@ -58,14 +54,21 @@
                                 <td>{{ $row->deskripsi }}</td>
                                 <td>{{ $row->jumlah }}</td>
                                 <td>
-                                    <span class="badge {{ $row->status === 'Dipinjam' ? 'bg-not-available' : 'bg-available' }}">
-                                        {{ $row->status_ketersediaan }}
-                                    </span>
+                                    @php
+                                        switch($row->status_ketersediaan){
+                                            case'tersedia':
+                                                echo"<span class='badge bg-available'>Tersedia</span>";
+                                                break;
+                                            case'tidak tersedia':
+                                                echo"<span class='badge bg-not-available'>Tidak Tersedia</span>";
+                                                break;
+                                        }
+                                    @endphp
                                 </td>
                                 <td>
-                                    <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#edit{{ $row->id }}" title="Edit">
+                                    <a href="{{ route('editInventori', $row->id) }}" class="btn btn-edit" title="Edit">
                                         <i class="fas fa-edit"></i>
-                                    </button>
+                                    </a>
                                     <button class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#delete{{ $row->id }}" title="Delete">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>

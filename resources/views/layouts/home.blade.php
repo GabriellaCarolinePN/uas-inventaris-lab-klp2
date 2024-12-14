@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/user/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user/form.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user/menu.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -41,5 +42,27 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert Notification -->
+@if (session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '{{ session('success') }}',
+        timer: 2000,
+        showConfirmButton: false,
+    });
+</script>
+@elseif (session('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
+        text: '{{ session('error') }}',
+        timer: 2000,
+        showConfirmButton: false,
+    });
+</script>
+@endif
 </body>
 </html>

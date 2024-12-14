@@ -15,9 +15,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Form Peminjaman User
-Route::get('/form-peminjaman', function () {
-    return view('user.form');
-})->name('form');
+Route::get('/form-peminjaman', [UserController::class, 'formPeminjaman'])->name('form');
+Route::post('/form-peminjaman', [UserController::class, 'addPeminjamandosen'])->name('peminjaman-dosen');
 
 //Akses admin
 Route::middleware(AdminMiddleware::class)->group(function () {
@@ -26,21 +25,16 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     })->name('dashboard');
 
     //Inventori
-    Route::get('/admin/inventoris', function () {
-        return view('admin.inventoris');
-    })->name('inventoris');
+    Route::get('/admin/inventoris', [AdminController::class, 'inventoris'])->name('inventoris');
     Route::get('/admin/inventoris/form', function () {
         return view('admin.forminventori');})
-    ->name('forminventoris');
+    ->name('forminventori');
+    Route::post('/admin/inventoris/form', [AdminController::class, 'addInventoris'])->name('addInventori');
+    Route::get('/admin/inventoris/form/{id}', [AdminController::class, 'editInventoris'])->name('editInventori');
+    Route::put('/admin/inventoris/form/{id}', [AdminController::class, 'updateInventoris'])->name('updateInventori');
+    Route::delete('/admin/inventoris/{id}', [AdminController::class, 'deleteInventoris'])->name('deleteInventori');
 
-    Route::get('/admin/riwayat-peminjaman', function () {
-        return view('admin.riwayat');
-    })->name('riwayat');
-    Route::get('/admin/data-peminjam', [AdminController::class, 'datapeminjam'])->name('data-peminjam');
+
+    Route::get('/admin/riwayat-peminjaman', [AdminController::class, 'riwayatpeminjaman'])->name('riwayat');
 });
 
-//Akses admin -> tabel peminjam
-Route::get('/datapeminjam', [AdminController::class, 'datapeminjam']);
-
-//Akses admin -> tabel inventori
-Route::get('/admin/inventoris', [AdminController::class, 'inventoris'])->name('inventoris');

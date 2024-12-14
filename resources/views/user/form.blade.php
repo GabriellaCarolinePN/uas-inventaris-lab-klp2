@@ -1,6 +1,9 @@
 @extends('layouts.home')
 
 @section('content')
+<?php
+    $today = date('Y-m-d'); // Tanggal hari ini (format YYYY-MM-DD)
+?>
 
 <h1>Form Peminjaman</h1>
 
@@ -25,45 +28,57 @@
   <div class="tab-content">
     <!-- Form Dosen/Staff -->
     <div class="tab-pane fade show active" id="pills-dosen-staff" role="tabpanel" aria-labelledby="tab-dosen-staff">
-      <form>
+      <form action="{{ route('peminjaman-dosen')}}" method="POST">
+        @csrf
         <!-- Nama -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="namaDosen">Nama</label>
-          <input type="text" id="namaDosen" class="form-control" required />
+          <input type="text" id="nama_peminjam" name="nama_peminjam" class="form-control" required />
+        </div>
+
+        <!-- Jenis Peminjam -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <input required type="hidden" class="form-control" name="jenis_peminjam" id="jenis_peminjam" value="dosen" placeholder="">
         </div>
   
         <!-- NIP -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="nipDosen">NIP</label>
-          <input type="text" id="nipDosen" class="form-control" required />
+          <input type="text" id="nip_nim" name="nip_nim" class="form-control" pattern="[0-9]{18}" required />
         </div>
   
         <!-- Kontak -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="kontakDosen">Kontak</label>
-          <input type="tel" id="kontakDosen" class="form-control" required />
+          <input type="tel" id="kontak" name="kontak" class="form-control" required />
         </div>
   
         <!-- Pilih Alat -->
         <div class="mb-4">
           <label for="alatDosen" class="form-label">Pilih Alat</label>
-          <select id="alatDosen" class="form-select" required>
+          <select id="inventory_id" name="inventory_id" class="form-select" required>
             <option value="">-- Pilih Alat --</option>
-            <option value="Laptop">Laptop</option>
-            <option value="Proyektor">Proyektor</option>
-            <option value="Kamera">Kamera</option>
+            @foreach ($alat as $a)
+              <option value="{{ $a->id }}">{{ $a->nama_alat }}</option>
+            @endforeach
           </select>
         </div>
+
+        <!-- Jumlah alat yang dipinjam -->
+        {{-- <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="jumlahalatDosen">Jumlah alat yang dipinjam</label>
+          <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" />
+        </div> --}}
   
         <!-- Tanggal Peminjaman & Pengembalian -->
         <div class="row mb-4">
           <div class="col-md-6">
             <label for="tglPinjamDosen" class="form-label">Tanggal Peminjaman</label>
-            <input type="date" id="tglPinjamDosen" class="form-control" required />
+            <input type="date" id="tanggal_peminjaman" name="tanggal_peminjaman" class="form-control" min="<?= $today; ?>" required />
           </div>
           <div class="col-md-6">
             <label for="tglKembaliDosen" class="form-label">Tanggal Pengembalian</label>
-            <input type="date" id="tglKembaliDosen" class="form-control" required />
+            <input type="date" id="tanggal_pengembalian" name="tanggal_pengembalian" class="form-control" min="<?= $today ?>" required />
           </div>
         </div>
   
@@ -75,10 +90,16 @@
     <!-- Form Mahasiswa -->
     <div class="tab-pane fade" id="pills-mahasiswa" role="tabpanel" aria-labelledby="tab-mahasiswa">
       <form>
+        @csrf
         <!-- Nama -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="namaMhs">Nama</label>
           <input type="text" id="namaMhs" class="form-control" required />
+        </div>
+
+        <!-- Jenis Peminjam -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <input required type="hidden" class="form-control" name="jenis_peminjam" id="jenis_peminjam" value="mahasiswa" placeholder="">
         </div>
   
         <!-- NIM -->
@@ -108,11 +129,11 @@
         <div class="row mb-4">
           <div class="col-md-6">
             <label for="tglPinjamMhs" class="form-label">Tanggal Peminjaman</label>
-            <input type="date" id="tglPinjamMhs" class="form-control" required />
+            <input type="date" id="tglPinjamMhs" class="form-control" min="<?= $today ?>" required />
           </div>
           <div class="col-md-6">
             <label for="tglKembaliMhs" class="form-label">Tanggal Pengembalian</label>
-            <input type="date" id="tglKembaliMhs" class="form-control" required />
+            <input type="date" id="tglKembaliMhs" class="form-control" min="<?= $today ?>" required />
           </div>
         </div>
   
