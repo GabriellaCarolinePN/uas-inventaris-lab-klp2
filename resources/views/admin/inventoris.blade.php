@@ -69,9 +69,13 @@
                                     <a href="{{ route('editInventori', $row->id) }}" class="btn btn-edit" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <button class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#delete{{ $row->id }}" title="Delete">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                    <form action="{{ route('deleteInventori', $row->id) }}" method="POST" onsubmit="return confirmDelete(event)">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-delete">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -80,3 +84,38 @@
             </div>
         </div>
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+    function confirmDelete(event) {
+        event.preventDefault(); // Prevent form submission
+
+        swal({
+            title: 'Apakah Anda Yakin?',
+            text: "Anda Tidak Akan Dapat Mengembalikannya!",
+            icon: 'warning', // Updated property
+            buttons: {
+                cancel: {
+                    text: "Batal",
+                    value: null,
+                    visible: true,
+                    className: "btn btn-secondary",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Ya, Hapus!",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-danger",
+                    closeModal: true
+                }
+            },
+        }).then((willDelete) => {
+            if (willDelete) {
+                event.target.submit(); // Submit the form if confirmed
+            }
+        });
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+@endpush
