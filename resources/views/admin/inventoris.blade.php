@@ -5,24 +5,52 @@
 @section('header', 'Invetoris')
 
 @push('styles')
-    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 @endpush
 
-@push('script')
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            new DataTable('#inventoriTable',{
-                oLanguage: {
-                    sLengthMenu: "Tampilkan _MENU_ data per halaman",
-                    sZeroRecords: "Data tidak ditemukan",
-                    sSearch: "Cari:",
+@push('scripts')
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Include DataTables -->
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <!-- Include SweetAlert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$('#tableInventori').dataTable();
+		} );
+
+        function confirmDelete(event) {
+            event.preventDefault(); // Prevent form submission
+
+            swal({
+                title: 'Apakah Anda Yakin?',
+                text: "Anda Tidak Akan Dapat Mengembalikannya!",
+                icon: 'warning',
+                buttons: {
+                    cancel: {
+                        text: "Batal",
+                        value: null,
+                        visible: true,
+                        className: "btn btn-secondary",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Ya, Hapus!",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true
+                    }
                 },
-                pageLength: 50
+            }).then((willDelete) => {
+                if (willDelete) {
+                    event.target.submit(); // Submit the form if confirmed
+                }
             });
-        })
-    </script> 
+        }
+    </script>
 @endpush
 
 @section('content')
@@ -33,7 +61,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" id="tableInventori">
                     <thead class="table-header">
                         <tr>
                             <th>No.</th>
@@ -84,38 +112,3 @@
             </div>
         </div>
 @endsection
-
-@push('scripts')
-<script type="text/javascript">
-    function confirmDelete(event) {
-        event.preventDefault(); // Prevent form submission
-
-        swal({
-            title: 'Apakah Anda Yakin?',
-            text: "Anda Tidak Akan Dapat Mengembalikannya!",
-            icon: 'warning', // Updated property
-            buttons: {
-                cancel: {
-                    text: "Batal",
-                    value: null,
-                    visible: true,
-                    className: "btn btn-secondary",
-                    closeModal: true,
-                },
-                confirm: {
-                    text: "Ya, Hapus!",
-                    value: true,
-                    visible: true,
-                    className: "btn btn-danger",
-                    closeModal: true
-                }
-            },
-        }).then((willDelete) => {
-            if (willDelete) {
-                event.target.submit(); // Submit the form if confirmed
-            }
-        });
-    }
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-@endpush
