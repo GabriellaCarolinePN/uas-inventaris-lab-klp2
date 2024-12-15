@@ -57,7 +57,7 @@
         <div class="mb-4">
           <label for="alatDosen" class="form-label">Pilih Alat</label>
           <select id="inventory_id" name="inventory_id" class="form-select" required>
-            <option value="">-- Pilih Alat --</option>
+            <option value="">Pilih Alat</option>
             @foreach ($alat as $a)
               <option value="{{ $a->id }}">{{ $a->nama_alat }}</option>
             @endforeach
@@ -69,6 +69,12 @@
           <label class="form-label" for="jumlahalatDosen">Jumlah alat yang dipinjam</label>
           <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" />
         </div> --}}
+
+        <!-- Jumlah alat yang dipinjam -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="jumlahalatDosen">Jumlah Alat</label>
+          <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" min="1" required />
+        </div>
   
         <!-- Tanggal Peminjaman & Pengembalian -->
         <div class="row mb-4">
@@ -118,11 +124,23 @@
         <div class="mb-4">
           <label for="alatMhs" class="form-label">Pilih Alat</label>
           <select id="alatMhs" class="form-select" required>
-            <option value="">-- Pilih Alat --</option>
+            <option value="">Pilih Alat</option>
             <option value="Laptop">Laptop</option>
             <option value="Proyektor">Proyektor</option>
             <option value="Kamera">Kamera</option>
           </select>
+        </div>
+
+        <!-- Jumlah Alat -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="jumlahAlatMhs">Jumlah Alat</label>
+          <input type="number" id="jumlahAlatMhs" class="form-control" min="1" required />
+        </div>
+
+        <!-- Upload File -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="fileUploadMhs">Upload File</label>
+          <input type="file" id="file_upload" name="file_upload" class="form-control" required />
         </div>
   
         <!-- Tanggal Peminjaman & Pengembalian -->

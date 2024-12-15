@@ -26,6 +26,27 @@
 
 <!-- Content Section -->
 <div class="container my-5">
+    <h3 class="text-center mb-4 fw-bold section-title">Barang yang Tersedia</h3>
+    <table class="table table-bordered text-center">
+        <thead class="table-header">
+            <tr>
+                <th>No.</th>
+                <th>Nama Alat</th>
+                <th>Jumlah Alat</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Alat A</td>
+                <td>10</td>
+                <td>Available</td>
+            </tr>
+        </tbody>
+    </table>
+
     <h3 class="text-center mb-4 fw-bold section-title">Syarat dan Ketentuan Peminjaman</h3>
     <div class="terms-box p-4 rounded">
         <p class="text-justify">
@@ -37,7 +58,6 @@
     </div>
 
     <div class="text-center mt-4">
-        <!-- Ubah ke URL Dummy -->
         <a href="{{ route('form') }}" class="btn btn-custom btn-lg">Pesan Sekarang</a>
     </div>
 </div>

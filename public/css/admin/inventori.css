@@ -29,10 +29,13 @@ h2 {
 .table-header {
     background-color: #faaf78;
     color: white;
+    text-align: center;
 }
 
 .table-bordered th, .table-bordered td {
     vertical-align: middle;
+    text-align: center;
+    
 }
 
 /* Tombol Edit dan Delete */

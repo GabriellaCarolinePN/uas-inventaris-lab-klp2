@@ -40,6 +40,52 @@
     text-transform: uppercase;
 }
 
+/* Reset Bootstrap Table Styling */
+.table {
+    width: 60%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    table-layout: auto; /* Default behavior: columns adjust to content width */
+}
+
+/* Basic Table Styling */
+.table th, .table td {
+    padding: 8px;  /* Default padding */
+    text-align: center;
+    border: 1px solid #ddd; /* Light border */
+    vertical-align: middle; /* Align content to middle */
+}
+
+/* Table Header Basic Style with #48BEC8 */
+.table th {
+    background-color: #FAAF78; /* Set header background to #48BEC8 */
+    color: #fff; /* White text */
+    font-weight: bold;
+    font-size: 1rem; /* Standard font size */
+}
+
+/* Table Row Background with #FBEAFF */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FBEAFF; /* Light pinkish color for odd rows */
+}
+
+/* Standard Border Styling */
+.table-bordered th, .table-bordered td {
+    border: 1px solid #ddd; /* Default light border */
+}
+
+/* Responsive Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Ensure table width adjusts based on header size */
+.table th {
+    width: auto; /* Allow auto width adjustment */
+}
+
+
+
 /* Terms Box */
 .terms-box {
     margin: 20px auto;
