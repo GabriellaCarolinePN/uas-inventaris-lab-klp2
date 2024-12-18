@@ -1,6 +1,6 @@
 /* Carousel Style */
 .banner {
-    height: 70vh;
+    height: 92vh;
     position: relative;
     background-size: cover;
     background-position: center;
@@ -13,7 +13,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Transparansi gelap */
+    background: rgba(0, 0, 0, 0.6); /* Transparansi gelap */
     z-index: 1;
 }
 
@@ -26,18 +26,24 @@
 
 .text-highlight {
     color: white;
-    font-size: 3rem;
+    font-size: 4.5rem;
 }
 
-.text-highlight:nth-child(even) {
+.text-highlight span {
+    color: #f8e71c; /* Default untuk teks yang tidak di-highlight */
+}
+
+.text-highlight span:hover {
+    color: #ffe08a; /* Menambahkan warna kuning saat hover untuk teks lainnya */
+}
+
+/* .text-highlight:nth-child(even) {
     color: yellow;
-}
-
+} */
 
 /* Section Title */
 .section-title {
     color: #48bec8;
-    text-transform: uppercase;
 }
 
 /* Reset Bootstrap Table Styling */
@@ -84,8 +90,6 @@
     width: auto; /* Allow auto width adjustment */
 }
 
-
-
 /* Terms Box */
 .terms-box {
     margin: 20px auto;
@@ -115,3 +119,25 @@
     background: #48bec8;
     color: white;
 }
+
+.btn-lht {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+/* Hover Effect */
+.btn-lht:hover {
+    background: #faaf78;
+    color: #333;
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
