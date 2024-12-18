@@ -62,9 +62,10 @@
                         </span>
                     </td>
                     <td>
-                        <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#edit{{ $row->id }}" title="Edit">
-                            <i class="fas fa-edit"></i>
-                        </button>
+                        <a type="button" class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#detailpeminjam{{ $row->id }}" title="Detail">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        @include('admin.modal.peminjam', array('row' => $row))
                         <button class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#delete{{ $row->id }}" title="Delete">
                             <i class="fas fa-trash-alt"></i>
                         </button>
