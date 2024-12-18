@@ -65,12 +65,6 @@
         </div>
 
         <!-- Jumlah alat yang dipinjam -->
-        {{-- <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="jumlahalatDosen">Jumlah alat yang dipinjam</label>
-          <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" />
-        </div> --}}
-
-        <!-- Jumlah alat yang dipinjam -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="jumlahalatDosen">Jumlah Alat</label>
           <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" min="1" required />
@@ -95,12 +89,12 @@
   
     <!-- Form Mahasiswa -->
     <div class="tab-pane fade" id="pills-mahasiswa" role="tabpanel" aria-labelledby="tab-mahasiswa">
-      <form>
+      <form action="{{ route('peminjaman-mhs')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <!-- Nama -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="namaMhs">Nama</label>
-          <input type="text" id="namaMhs" class="form-control" required />
+          <input type="text" id="nama_peminjam" name="nama_peminjam" class="form-control" required />
         </div>
 
         <!-- Jenis Peminjam -->
@@ -111,47 +105,47 @@
         <!-- NIM -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="nimMhs">NIM</label>
-          <input type="text" id="nimMhs" class="form-control" required />
+          <input type="text" id="nip_nim" name="nip_nim" class="form-control" pattern="[A-Z]{1}[0-9]{7}" required />
         </div>
   
         <!-- Kontak -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="kontakMhs">Kontak</label>
-          <input type="tel" id="kontakMhs" class="form-control" required />
+          <input type="tel" id="kontak" name="kontak" class="form-control" required />
         </div>
   
         <!-- Pilih Alat -->
         <div class="mb-4">
           <label for="alatMhs" class="form-label">Pilih Alat</label>
-          <select id="alatMhs" class="form-select" required>
+          <select id="inventory_id" name="inventory_id" class="form-select" required>
             <option value="">Pilih Alat</option>
-            <option value="Laptop">Laptop</option>
-            <option value="Proyektor">Proyektor</option>
-            <option value="Kamera">Kamera</option>
+            @foreach ($alat as $a)
+              <option value="{{ $a->id }}">{{ $a->nama_alat }}</option>
+            @endforeach
           </select>
         </div>
 
         <!-- Jumlah Alat -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="jumlahAlatMhs">Jumlah Alat</label>
-          <input type="number" id="jumlahAlatMhs" class="form-control" min="1" required />
+          <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" min="1" required />
         </div>
 
         <!-- Upload File -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="fileUploadMhs">Upload File</label>
-          <input type="file" id="file_upload" name="file_upload" class="form-control" required />
+          <input type="file" id="surat" name="surat" class="form-control" required />
         </div>
   
         <!-- Tanggal Peminjaman & Pengembalian -->
         <div class="row mb-4">
           <div class="col-md-6">
             <label for="tglPinjamMhs" class="form-label">Tanggal Peminjaman</label>
-            <input type="date" id="tglPinjamMhs" class="form-control" min="<?= $today ?>" required />
+            <input type="date" id="tanggal_peminjaman" name="tanggal_peminjaman" class="form-control" min="<?= $today; ?>" required />
           </div>
           <div class="col-md-6">
             <label for="tglKembaliMhs" class="form-label">Tanggal Pengembalian</label>
-            <input type="date" id="tglKembaliMhs" class="form-control" min="<?= $today ?>" required />
+            <input type="date" id="tanggal_pengembalian" name="tanggal_pengembalian" class="form-control" min="<?= $today ?>" required />
           </div>
         </div>
   

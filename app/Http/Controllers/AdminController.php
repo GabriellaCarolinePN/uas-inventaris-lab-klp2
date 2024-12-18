@@ -87,13 +87,13 @@ class AdminController extends Controller
 
     public function deleteInventoris($id){
         $inventori = Inventaris::findOrFail($id);
-        // $inventoridipakai = Inventaris::withWhereHas('Peminjam', function ($query) use ($inventori){
-        //     $query->where('inventory_id', $inventori->id);
-        // })->exists();
+        $inventoridipakai = Inventaris::withWhereHas('peminjams', function ($query) use ($inventori){
+            $query->where('inventory_id', $inventori->id);
+        })->exists();
         
-        // if($inventoridipakai){
-        //     return redirect()->back()->with('error', 'Data Inventaris tidak dapat dihapus karena telah digunakan pada data lain!');
-        // }
+        if($inventoridipakai){
+            return redirect()->back()->with('error', 'Data Inventaris tidak dapat dihapus karena telah digunakan pada data lain!');
+        }
 
         $inventori->delete();
         return redirect()->route('inventoris')->with('success', 'Data Inventaris berhasil dihapus');

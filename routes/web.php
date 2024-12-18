@@ -16,7 +16,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Form Peminjaman User
 Route::get('/form-peminjaman', [UserController::class, 'formPeminjaman'])->name('form');
-Route::post('/form-peminjaman', [UserController::class, 'addPeminjamandosen'])->name('peminjaman-dosen');
+Route::post('/form-peminjaman/dosen', [UserController::class, 'addPeminjamandosen'])->name('peminjaman-dosen');
+Route::post('/form-peminjaman/mahasiswa', [UserController::class, 'addPeminjamanmhs'])->name('peminjaman-mhs');
 
 //Akses admin
 Route::middleware(AdminMiddleware::class)->group(function () {

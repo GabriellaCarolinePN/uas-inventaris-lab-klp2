@@ -34,6 +34,7 @@ class UserController extends Controller
             'jenis_peminjam' => 'required',
             'kontak' => 'required',
             'inventory_id' => 'required',
+            'jumlah_alat' => 'required|integer|min:1',
             'tanggal_peminjaman' => 'required|date',
             'tanggal_pengembalian' => 'required|date|after_or_equal:tanggal_peminjaman',
         ];
@@ -48,32 +49,106 @@ class UserController extends Controller
         // Ambil data dari request
         $data = $request->all();
         $data['status'] = "belum kembali";
-
+    
         $tanggalPeminjaman = new \DateTime($data['tanggal_peminjaman']);
         $tanggalPengembalian = new \DateTime($data['tanggal_pengembalian']);
         $interval = $tanggalPeminjaman->diff($tanggalPengembalian)->days;
-
+    
         if ($interval > 7) {
             return redirect()->back()->withInput()->with('error', 'Tanggal pengembalian tidak boleh lebih dari 7 hari sejak tanggal peminjaman!');
         }
+
+        $alat = Inventaris::findOrFail($data['inventory_id']);
+        if ($alat->jumlah < $data['jumlah_alat']) {
+            return redirect()->back()->withInput()->with('error', 'Stok alat tidak mencukupi!');
+        }
+        
+        $jumlahalat = $alat['jumlah'] - $data['jumlah_alat'];
         
         // Kurangi jumlah alat
         try {
-            $alat = Inventaris::findOrFail($data['inventory_id']);
-            if ($alat->jumlah <= 0) {
-                return redirect()->back()->withInput()->with('error', 'Stok alat tidak mencukupi!');
-            }
+            // Simpan data peminjaman ke database
+            Peminjam::create($data);
+
+            // Update jumlah dan status ketersediaan alat
+            $alat->update([
+                'jumlah' => $jumlahalat,
+                'status_ketersediaan' => $jumlahalat === 0 ? 'tidak tersedia' : 'tersedia',
+            ]);
+        } catch (\Exception $e) {
+            // Jangan menyimpan objek $e ke sesi
+            return redirect()->back()->with('error', 'Terjadi kesalahan pada sistem. Silakan coba lagi.')->withInput();
+        }
+
+        return redirect()->route('home')->with('success', 'Data Peminjaman berhasil diinput');
+    }    
     
-            $jumlahalat = $alat->jumlah - 1;
+    public function addPeminjamanmhs(Request $request) {
+        // Validasi data form
+        $globalValidatorData = [
+            'nama_peminjam' => 'required',
+            'jenis_peminjam' => 'required',
+            'kontak' => 'required',
+            'inventory_id' => 'required',
+            'jumlah_alat' => 'required|integer|min:1',
+            'tanggal_peminjaman' => 'required|date',
+            'tanggal_pengembalian' => 'required|date|after_or_equal:tanggal_peminjaman',
+            'surat' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048', // Maksimum 2MB
+        ];
     
-            // Simpan data peminjaman dan update inventaris
+        $globalValidator = Validator::make($request->all(), $globalValidatorData);
+        
+        // Validasi input awal
+        if ($globalValidator->fails()) {
+            return redirect()->back()->withErrors($globalValidator)->withInput();
+        }
+    
+        // Ambil data dari request
+        $data = $request->except('surat'); // Kecuali file surat, simpan data lain dulu
+        $data['status'] = "belum kembali";
+    
+        // Validasi tanggal
+        $tanggalPeminjaman = new \DateTime($data['tanggal_peminjaman']);
+        $tanggalPengembalian = new \DateTime($data['tanggal_pengembalian']);
+        $interval = $tanggalPeminjaman->diff($tanggalPengembalian)->days;
+    
+        if ($interval > 7) {
+            return redirect()->back()->withInput()->with('error', 'Tanggal pengembalian tidak boleh lebih dari 7 hari sejak tanggal peminjaman!');
+        }
+
+        $alat = Inventaris::findOrFail($data['inventory_id']);
+        if ($alat->jumlah < $data['jumlah_alat']) {
+            return redirect()->back()->withInput()->with('error', 'Stok alat tidak mencukupi!');
+        }
+        
+        $jumlahalat = $alat['jumlah'] - $data['jumlah_alat'];
+    
+        try {
+            // Simpan data peminjaman ke database
             $peminjaman = Peminjam::create($data);
-            $alat->update(['jumlah' => $jumlahalat]);
-        } catch (Exception $e) {
-            Alert::error('Gagal!', 'Cek pada form inventoris apakah ada kesalahan yang terjadi.');
-            return redirect()->back()->withError($e)->withInput();
+
+             // Update jumlah dan status ketersediaan alat
+            $alat->update([
+                'jumlah' => $jumlahalat,
+                'status_ketersediaan' => $jumlahalat === 0 ? 'tidak tersedia' : 'tersedia',
+            ]);
+    
+            // Jika data berhasil disimpan, unggah file surat
+            if ($request->hasFile('surat')) {
+                $file = $request->file('surat');
+                $nama_file = time() . "_" . $file->getClientOriginalName();
+    
+                // Upload file ke folder public/surat
+                $file->move(public_path('surat'), $nama_file);
+    
+                // Simpan nama file surat ke database
+                $peminjaman->update(['surat' => $nama_file]);
+            }
+        } catch (\Exception $e) {
+            Alert::error('Gagal!', 'Terjadi kesalahan pada sistem. Silakan coba lagi.');
+            return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     
         return redirect()->route('home')->with('success', 'Data Peminjaman berhasil diinput');
-    }    
+    }        
 }
