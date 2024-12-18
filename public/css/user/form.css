@@ -1,11 +1,10 @@
 /* Tab Content Styles */
 .tab-content {
   margin: auto;
-  padding: 10px; /* Tambahkan ruang di dalam tab-content */
+  padding: 10px; 
   background: #F9F9F9; /* Warna latar belakang agar lebih kontras */
- 
-  border-radius: 5px; /* Membulatkan sudut */
-  margin-top: 10px; /* Tambahkan jarak di atas tab-content */
+  border-radius: 5px; 
+  margin-top: 10px; 
 }
 
 /* Font Styles */
