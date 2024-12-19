@@ -134,7 +134,7 @@
         <!-- Upload File -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="fileUploadMhs">Upload File</label>
-          <input type="file" id="surat" name="surat" class="form-control" required />
+          <input type="file" id="surat" name="surat" class="form-control"/>
         </div>
   
         <!-- Tanggal Peminjaman & Pengembalian -->

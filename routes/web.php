@@ -37,5 +37,6 @@ Route::middleware(AdminMiddleware::class)->group(function () {
 
 
     Route::get('/admin/riwayat-peminjaman', [AdminController::class, 'riwayatpeminjaman'])->name('riwayat');
+    Route::post('/admin/riwayat-peminjaman/{id}/status', [AdminController::class, 'updateStatuspeminjaman'])->name('statusRiwayat');
 });
 

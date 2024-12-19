@@ -24,28 +24,15 @@
         function confirmDelete(event) {
             event.preventDefault(); // Prevent form submission
 
-            swal({
-                title: 'Apakah Anda Yakin?',
-                text: "Anda Tidak Akan Dapat Mengembalikannya!",
+            Swal.fire({
+                title: 'Ingin menghapusnya?',
+                text: "Data yang sudah dihapus tidak dapat dikembalikan!",
                 icon: 'warning',
-                buttons: {
-                    cancel: {
-                        text: "Batal",
-                        value: null,
-                        visible: true,
-                        className: "btn btn-secondary",
-                        closeModal: true,
-                    },
-                    confirm: {
-                        text: "Ya, Hapus!",
-                        value: true,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true
-                    }
-                },
-            }).then((willDelete) => {
-                if (willDelete) {
+                showCancelButton: true,
+                cancelButtonText: "Batal",
+                confirmButtonText: "Ya, Hapus!",
+            }).then((result) => {
+                if (result.isConfirmed) {
                     event.target.submit(); // Submit the form if confirmed
                 }
             });

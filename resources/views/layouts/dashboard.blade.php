@@ -11,8 +11,8 @@
     <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin/inventori.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin/form-inventori.css') }}" rel="stylesheet">
+    @stack('styles')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @stack('script')
 </head>
 
 <body>
@@ -48,7 +48,7 @@
                     icon: 'success',
                     title: 'Berhasil!',
                     text: '{{ session('success') }}',
-                    timer: 2000,
+                    timer: 3000,
                     showConfirmButton: false,
                 });
             </script>
@@ -58,7 +58,7 @@
                     icon: 'error',
                     title: 'Gagal!',
                     text: '{{ session('error') }}',
-                    timer: 2000,
+                    timer: 3000,
                     showConfirmButton: false,
                 });
             </script>

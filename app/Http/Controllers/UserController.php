@@ -93,7 +93,7 @@ class UserController extends Controller
             'jumlah_alat' => 'required|integer|min:1',
             'tanggal_peminjaman' => 'required|date',
             'tanggal_pengembalian' => 'required|date|after_or_equal:tanggal_peminjaman',
-            'surat' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048', // Maksimum 2MB
+            'surat' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048', // Maksimum 2MB
         ];
     
         $globalValidator = Validator::make($request->all(), $globalValidatorData);

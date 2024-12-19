@@ -87,9 +87,7 @@ class AdminController extends Controller
 
     public function deleteInventoris($id){
         $inventori = Inventaris::findOrFail($id);
-        $inventoridipakai = Inventaris::withWhereHas('peminjams', function ($query) use ($inventori){
-            $query->where('inventory_id', $inventori->id);
-        })->exists();
+        $inventoridipakai = Peminjam::where('inventory_id', $id)->where('status', 'belum kembali')->exists();
         
         if($inventoridipakai){
             return redirect()->back()->with('error', 'Data Inventaris tidak dapat dihapus karena telah digunakan pada data lain!');
@@ -97,6 +95,28 @@ class AdminController extends Controller
 
         $inventori->delete();
         return redirect()->route('inventoris')->with('success', 'Data Inventaris berhasil dihapus');
+    }
+
+    public function updateStatuspeminjaman($id){
+        $riwayat = Peminjam::findOrFail($id);
+        $alat = Inventaris::findOrFail($riwayat['inventory_id']);
+
+        $jumlahalat = $alat['jumlah'] + $riwayat['jumlah_alat'];
+
+        try {
+            $riwayat->update(['status' => "sudah kembali"]);
+
+            // Update jumlah dan status ketersediaan alat
+            $alat->update([
+                'jumlah' => $jumlahalat,
+                'status_ketersediaan' => $jumlahalat === 0 ? 'tidak tersedia' : 'tersedia',
+            ]);
+        } catch (\Exception $e) {
+            // Jangan menyimpan objek $e ke sesi
+            return redirect()->back()->with('error', 'Terjadi kesalahan pada sistem. Silakan coba lagi.')->withInput();
+        }
+
+        return redirect()->route('riwayat')->with('success', 'Alat yang dipinjam telah dikembalikan.');
     }
 
 }
