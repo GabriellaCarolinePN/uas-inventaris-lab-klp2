@@ -32,7 +32,7 @@
         @csrf
         <!-- Nama -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="namaDosen">Nama</label>
+          <label class="form-label" for="namaDosen">Nama<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="text" id="nama_peminjam" name="nama_peminjam" class="form-control" required />
         </div>
 
@@ -43,19 +43,19 @@
   
         <!-- NIP -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="nipDosen">NIP</label>
+          <label class="form-label" for="nipDosen">NIP<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="text" id="nip_nim" name="nip_nim" class="form-control" pattern="[0-9]{18}" required />
         </div>
   
         <!-- Kontak -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="kontakDosen">No WhatsApp (Contoh: 08123456789)</label>
+          <label class="form-label" for="kontakDosen">No WhatsApp (Contoh: 08123456789)<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="tel" id="kontak" name="kontak" class="form-control" required />
         </div>
   
         <!-- Pilih Alat -->
         <div class="mb-4">
-          <label for="alatDosen" class="form-label">Pilih Alat</label>
+          <label for="alatDosen" class="form-label">Pilih Alat<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <select id="inventory_id" name="inventory_id" class="form-select" required>
             <option value="">Pilih Alat</option>
             @foreach ($alat as $a)
@@ -66,18 +66,18 @@
 
         <!-- Jumlah alat yang dipinjam -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="jumlahalatDosen">Jumlah Alat</label>
+          <label class="form-label" for="jumlahalatDosen">Jumlah Alat<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" min="1" required />
         </div>
   
         <!-- Tanggal Peminjaman & Pengembalian -->
         <div class="row mb-4">
           <div class="col-md-6">
-            <label for="tglPinjamDosen" class="form-label">Tanggal Peminjaman</label>
+            <label for="tglPinjamDosen" class="form-label">Tanggal Peminjaman<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
             <input type="date" id="tanggal_peminjaman" name="tanggal_peminjaman" class="form-control" min="<?= $today; ?>" required />
           </div>
           <div class="col-md-6">
-            <label for="tglKembaliDosen" class="form-label">Tanggal Pengembalian</label>
+            <label for="tglKembaliDosen" class="form-label">Tanggal Pengembalian<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
             <input type="date" id="tanggal_pengembalian" name="tanggal_pengembalian" class="form-control" min="<?= $today ?>" required />
           </div>
         </div>
@@ -93,7 +93,7 @@
         @csrf
         <!-- Nama -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="namaMhs">Nama</label>
+          <label class="form-label" for="namaMhs">Nama<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="text" id="nama_peminjam" name="nama_peminjam" class="form-control" required />
         </div>
 
@@ -104,19 +104,19 @@
   
         <!-- NIM -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="nimMhs">NIM</label>
+          <label class="form-label" for="nimMhs">NIM<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="text" id="nip_nim" name="nip_nim" class="form-control" pattern="[A-Z]{1}[0-9]{7}" required />
         </div>
   
         <!-- Kontak -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="kontakMhs">No WhatsApp (Contoh: 08123456789)</label>
+          <label class="form-label" for="kontakMhs">No WhatsApp (Contoh: 08123456789)<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="tel" id="kontak" name="kontak" class="form-control" required />
         </div>
   
         <!-- Pilih Alat -->
         <div class="mb-4">
-          <label for="alatMhs" class="form-label">Pilih Alat</label>
+          <label for="alatMhs" class="form-label">Pilih Alat<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <select id="inventory_id" name="inventory_id" class="form-select" required>
             <option value="">Pilih Alat</option>
             @foreach ($alat as $a)
@@ -127,7 +127,7 @@
 
         <!-- Jumlah Alat -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="jumlahAlatMhs">Jumlah Alat</label>
+          <label class="form-label" for="jumlahAlatMhs">Jumlah Alat<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
           <input type="number" id="jumlah_alat" name="jumlah_alat" class="form-control" min="1" required />
         </div>
 
@@ -140,11 +140,11 @@
         <!-- Tanggal Peminjaman & Pengembalian -->
         <div class="row mb-4">
           <div class="col-md-6">
-            <label for="tglPinjamMhs" class="form-label">Tanggal Peminjaman</label>
+            <label for="tglPinjamMhs" class="form-label">Tanggal Peminjaman<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
             <input type="date" id="tanggal_peminjaman" name="tanggal_peminjaman" class="form-control" min="<?= $today; ?>" required />
           </div>
           <div class="col-md-6">
-            <label for="tglKembaliMhs" class="form-label">Tanggal Pengembalian</label>
+            <label for="tglKembaliMhs" class="form-label">Tanggal Pengembalian<span class="text-danger" style="font-weight: 500;font-size: 15px;">*</span></label>
             <input type="date" id="tanggal_pengembalian" name="tanggal_pengembalian" class="form-control" min="<?= $today ?>" required />
           </div>
         </div>

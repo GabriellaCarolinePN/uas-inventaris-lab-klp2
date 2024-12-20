@@ -37,6 +37,18 @@ Route::middleware(AdminMiddleware::class)->group(function () {
 
 
     Route::get('/admin/riwayat-peminjaman', [AdminController::class, 'riwayatpeminjaman'])->name('riwayat');
+    Route::get('/admin/riwayat-peminjaman/surat/{filename}', function ($filename) {
+        $path = public_path('surat/' . $filename);
+    
+        if (file_exists($path)) {
+            $mimeType = mime_content_type($path); // Dapatkan MIME type
+            return response()->file($path, [
+                'Content-Type' => $mimeType,
+            ]);
+        }
+    
+        abort(404, 'File tidak ditemukan');
+    });
     Route::post('/admin/riwayat-peminjaman/{id}/status', [AdminController::class, 'updateStatuspeminjaman'])->name('statusRiwayat');
 });
 
