@@ -5,7 +5,7 @@
 @section('header', 'Riwayat Peminjaman')
 
 @push('styles')
-    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
     <style>
         .switch {
         position: relative;
@@ -76,7 +76,12 @@
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <!-- Include SweetAlert -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
     <script type="text/javascript">
+        $(document).ready(function() {
+			$('#tableRiwayat').dataTable();
+		} );
+        
         function confirmStatus(event) {
             event.preventDefault(); // Prevent form submission
 
@@ -105,7 +110,7 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped" id="tableRiwayat">
             <thead class="table-header">
                 <tr>
                     <th>No</th>
