@@ -64,7 +64,7 @@
 
 /* Table Header Basic Style with #48BEC8 */
 .table th {
-    background-color: #FAAF78; /* Set header background to #48BEC8 */
+    background-color: #48bec8; /* Set header background to #48BEC8 */
     color: #fff; /* White text */
     font-weight: bold;
     font-size: 1rem; /* Standard font size */

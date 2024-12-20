@@ -49,7 +49,7 @@
   
         <!-- Kontak -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="kontakDosen">Kontak</label>
+          <label class="form-label" for="kontakDosen">No WhatsApp (Contoh: 08123456789)</label>
           <input type="tel" id="kontak" name="kontak" class="form-control" required />
         </div>
   
@@ -110,7 +110,7 @@
   
         <!-- Kontak -->
         <div data-mdb-input-init class="form-outline mb-4">
-          <label class="form-label" for="kontakMhs">Kontak</label>
+          <label class="form-label" for="kontakMhs">No WhatsApp (Contoh: 08123456789)</label>
           <input type="tel" id="kontak" name="kontak" class="form-control" required />
         </div>
   
