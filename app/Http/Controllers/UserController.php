@@ -19,8 +19,15 @@ class UserController extends Controller
                     ->map(function ($file) {
                         return asset('image/' . $file->getFilename());
                     });
-        return view('user.menu', ['images' => $images]);
-    }
+    
+        // Ambil data inventaris
+        $inventoris = Inventaris::all();
+        return view('user.menu', [
+            'images' => $images,
+            'inventoris' => $inventoris
+        ]);
+    
+    }    
 
     public function formPeminjaman(){
         $alat = Inventaris::all();

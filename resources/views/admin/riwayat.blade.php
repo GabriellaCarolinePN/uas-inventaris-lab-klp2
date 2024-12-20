@@ -109,6 +109,7 @@
             <thead class="table-header">
                 <tr>
                     <th>No</th>
+                    <th>Nama Peminjam</th> 
                     <th>Jenis Peminjam</th>
                     <th>Nama Alat</th>
                     <th>Tanggal Peminjaman</th>
@@ -121,7 +122,8 @@
             <tbody>
                 @foreach ($peminjaman as $key => $row)
                 <tr>
-                    <td>{{ $row->id }}</td>
+                    <td>{{ $key+1 }}</td>
+                    <td>{{ $row->nama_peminjam }}</td>
                     <td>{{ $row->jenis_peminjam }}</td>
                     <td>{{ $row->nama_alat ?? 'N/A' }}</td>
                     <td>{{ $row->tanggal_peminjaman }}</td>
@@ -143,9 +145,6 @@
                             <i class="fas fa-eye"></i>
                         </a>
                         @include('admin.modal.peminjam', array('row' => $row))
-                        <button class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#delete{{ $row->id }}" title="Delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
                     </td>
                     <td>
                         <form action="{{ route('statusRiwayat', $row->id) }}" method="POST">

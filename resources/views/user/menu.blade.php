@@ -42,22 +42,25 @@
         </thead>
 
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Alat A</td>
-                <td>10</td>
-                <td>
-                    <button class="btn btn-success btn-sm">Tersedia</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Alat B</td>
-                <td>0</td>
-                <td>
-                    <button class="btn btn-secondary btn-sm">Tidak Tersedia</button> <!-- Button abu-abu untuk tidak tersedia -->
-                </td>
-            </tr>
+            @foreach ($inventoris as $key => $row)
+                <tr>
+                    <td>{{ $key+1 }}</td>
+                    <td>{{ $row->nama_alat }}</td>
+                    <td>{{ $row->jumlah }}</td>
+                    <td>
+                        @php
+                            switch($row->status_ketersediaan){
+                                case'tersedia':
+                                    echo"<span class='btn btn-success btn-sm'>Tersedia</span>";
+                                    break;
+                                case'tidak tersedia':
+                                    echo"<span class='btn btn-secondary btn-sm'>Tidak Tersedia</span>";
+                                    break;
+                            }
+                        @endphp
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 
