@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Invetoris')
+@section('title', 'Inventaris')
 
-@section('header', 'Invetoris')
+@section('header', 'Inventaris')
 
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
@@ -41,34 +41,34 @@
 @endpush
 
 @section('content')
-        <div class="container my-5">
+        <div class="container table-container my-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold">Inventori Peminjaman Lab</h2>
-                <a class="btn btn-add" href="{{ route('forminventori') }}">+ Add Inventori</a>
+                <h2 class="fw-bold">Inventaris Peminjaman Lab</h2>
+                <a class="btn btn-add" href="{{ route('forminventori') }}">+ Add Inventari</a>
             </div>
 
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" id="tableInventori">
                     <thead class="table-header">
                         <tr>
-                            <th>No.</th>
-                            <th>Kode Alat</th>
-                            <th>Nama Alat</th>
-                            <th>Deskripsi</th>
-                            <th>Jumlah</th>
-                            <th>Status Ketersediaan</th>
-                            <th>Action</th>
+                            <th class="text-center">No.</th>
+                            <th class="text-center">Kode Alat</th>
+                            <th class="text-center">Nama Alat</th>
+                            <th class="text-center">Deskripsi</th>
+                            <th class="text-center">Jumlah</th>
+                            <th class="text-center">Status Ketersediaan</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($inventoris as $key => $row)
                             <tr>
-                                <td>{{ $row->id }}</td>
+                                <td class="text-center">{{ $row->id }}</td>
                                 <td>{{ $row->kode_alat }}</td>
                                 <td>{{ $row->nama_alat }}</td>
-                                <td>{{ $row->deskripsi }}</td>
-                                <td>{{ $row->jumlah }}</td>
-                                <td>
+                                <td class="text-wrap">{{ $row->deskripsi }}</td>
+                                <td class="text-center">{{ $row->jumlah }}</td>
+                                <td class="text-center">
                                     @php
                                         switch($row->status_ketersediaan){
                                             case'tersedia':
@@ -80,11 +80,11 @@
                                         }
                                     @endphp
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a href="{{ route('editInventori', $row->id) }}" class="btn btn-edit" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form action="{{ route('deleteInventori', $row->id) }}" method="POST" onsubmit="return confirmDelete(event)">
+                                    <form action="{{ route('deleteInventori', $row->id) }}" method="POST" onsubmit="return confirmDelete(event)" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-delete">
@@ -96,6 +96,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div>            
         </div>
 @endsection

@@ -9,7 +9,7 @@
                 <div class="overlay"></div>
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center text-white">
                     <h1 class="display-4 fw-bold text-highlight">
-                        <span class="">Selamat Datang</span> di <br> Sistem Informasi <span class="">Peminjaman Inventori Lab</span>
+                        <span class="">Selamat Datang</span> di <br> Sistem Informasi <span class="">Peminjaman Inventaris Lab</span>
                     </h1>
 
                     <a href="#barangTersedia" class="btn btn-lht btn-lg mt-4">

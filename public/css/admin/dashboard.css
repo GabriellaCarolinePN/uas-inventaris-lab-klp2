@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e9e5e5;
+    background-color: #F4F4F4;  
 }
 
 /* Sidebar Styles */
@@ -121,6 +121,12 @@ body {
     font-size: 16px;
     color: #343a40;
 }
+
+.icon {
+    font-size: 30px;
+    color: #FAAF78;
+}
+
 
 /* Button & Notification Styles */
 button {

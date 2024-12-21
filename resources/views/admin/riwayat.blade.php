@@ -104,7 +104,7 @@
 @endpush
 
 @section('content')
-<div class="container my-5">
+<div class="container table-container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold">Riwayat Peminjaman</h2>
     </div>
@@ -113,27 +113,27 @@
         <table class="table table-bordered table-striped" id="tableRiwayat">
             <thead class="table-header">
                 <tr>
-                    <th>No</th>
-                    <th>Nama Peminjam</th> 
-                    <th>Jenis Peminjam</th>
-                    <th>Nama Alat</th>
-                    <th>Tanggal Peminjaman</th>
-                    <th>Tanggal Pengembalian</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                    <th>Sudah dikembalikan?</th>
+                    <th class="text-center">No</th>
+                    <th class="text-center">Nama Peminjam</th>
+                    <th class="text-center">Jenis Peminjam</th>
+                    <th class="text-center">Nama Alat</th>
+                    <th class="text-center">Tanggal Peminjaman</th>
+                    <th class="text-center">Tanggal Pengembalian</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Action</th>
+                    <th class="text-center">Sudah dikembalikan?</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($peminjaman as $key => $row)
                 <tr>
-                    <td>{{ $key+1 }}</td>
-                    <td>{{ $row->nama_peminjam }}</td>
-                    <td>{{ $row->jenis_peminjam }}</td>
-                    <td>{{ $row->nama_alat ?? 'N/A' }}</td>
-                    <td>{{ $row->tanggal_peminjaman }}</td>
-                    <td>{{ $row->tanggal_pengembalian }}</td>
-                    <td>
+                    <td class="text-center align-middle">{{ $key+1 }}</td>
+                    <td class="text-center align-middle">{{ $row->nama_peminjam }}</td>
+                    <td class="text-center align-middle">{{ $row->jenis_peminjam }}</td>
+                    <td class="text-center align-middle">{{ $row->nama_alat ?? 'N/A' }}</td>
+                    <td class="text-center align-middle">{{ $row->tanggal_peminjaman }}</td>
+                    <td class="text-center align-middle">{{ $row->tanggal_pengembalian }}</td>
+                    <td class="text-center align-middle">
                         @php
                             switch($row->status){
                                 case'belum kembali':
