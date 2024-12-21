@@ -27,68 +27,24 @@ h2 {
 }
 
 /* Tabel */
-/* .table-header {
+.table-header {
     background-color: #faaf78;
     color: white;
     text-align: center;
-}
-
-.table-bordered th, .table-bordered td {
-    vertical-align: middle;
-    text-align: center;    
-}   */
-
-/* Tabel */
-.table-header {
-    background-color: #faaf78; /* Warna utama */
-    color: white;
-    text-align: center;
     font-weight: bold;
-    padding: 10px;
-    border-radius: 8px 8px 0 0; /* Membuat sudut atas tabel melengkung */
-}
-
-.table-bordered {
-    border: 1px solid #faaf78;
-    border-collapse: collapse;
-    width: 100%;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
 }
 
 .table-bordered th, .table-bordered td {
-    border: 1px solid #faaf78; 
+    vertical-align: middle; 
     padding: 12px 15px;
     text-align: center;
-    vertical-align: middle;
-}
-
-.table-bordered tr:nth-child(even) {
-    background-color: #fdf3eb; /* Warna baris genap */
-}
-
-.table-bordered tr:nth-child(odd) {
-    background-color: #fff; /* Warna baris ganjil */
-}
-
-/* .table-bordered tr:hover {
-    background-color: #f4d8c5; 
-    transition: background-color 0.3s ease;
-} */
-
-.table-bordered tr:hover {
-    background-color: rgba(250, 175, 120, 0.3);  /* Warna #FAAF78 dengan transparansi 0.3 */
-    transition: background-color 0.3s ease;
-}
-
+    border: 1px solid #faaf78;
+}  
 
 .table-bordered th {
-    background: linear-gradient(90deg, #faaf78, #f57e42); 
-    color: white;
     font-size: 16px;
     letter-spacing: 0.5px;
 }
-
 
 
 /* Tombol Edit dan Delete */

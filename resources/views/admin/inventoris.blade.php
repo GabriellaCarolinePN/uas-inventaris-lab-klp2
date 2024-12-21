@@ -44,11 +44,11 @@
         <div class="container table-container my-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold">Inventaris Peminjaman Lab</h2>
-                <a class="btn btn-add" href="{{ route('forminventori') }}">+ Add Inventari</a>
+                <a class="btn btn-add" href="{{ route('forminventori') }}">+ Add Inventaris</a>
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="tableInventori">
+                <table class="table table-bordered table-striped table-hover" id="tableInventori">
                     <thead class="table-header">
                         <tr>
                             <th class="text-center">No.</th>

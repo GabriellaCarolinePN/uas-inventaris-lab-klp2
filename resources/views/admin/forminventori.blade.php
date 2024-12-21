@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
 
-@section('title', isset($inventori) ? 'Edit Inventoris' : 'Tambah Inventoris')
+@section('title', isset($inventori) ? 'Edit Inventaris' : 'Tambah Inventaris')
 
-@section('header', isset($inventori) ? 'Edit Inventoris' : 'Tambah Inventoris')
+@section('header', isset($inventori) ? 'Edit Inventaris' : 'Tambah Inventaris')
 
 @section('content')
 <div class="container my-5">
-    <h2 class="text-center title">{{ isset($inventori) ? 'Edit Inventori' : 'Tambah Inventori' }}</h2>
+    <h2 class="text-center title">{{ isset($inventori) ? 'Edit Inventaris' : 'Tambah Inventaris' }}</h2>
     <div class="card shadow-lg">
         <div class="card-body">
             <form action="{{ isset($inventori) ? route('updateInventori', $inventori->id) : route('addInventori') }}" method="POST" class="equipment-form">
