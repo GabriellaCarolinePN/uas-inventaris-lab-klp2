@@ -27,7 +27,7 @@
             <h2>@yield('header', 'Welcome Admin')</h2>
             <div class="dropdown profile-dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user-circle me-1"></i> Admin
+                    <img  src="{{ asset('image/pp/profile.jpg') }}" alt="" class="rounded-circle me-2 border border-white border-2" width="35" height="35"> Admin
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li>
