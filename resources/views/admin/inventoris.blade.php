@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Inventaris')
+@section('title', '')
 
-@section('header', 'Inventaris')
+@section('header', '')
 
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />

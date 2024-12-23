@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Riwayat Peminjaman')
+@section('title', '')
 
-@section('header', 'Riwayat Peminjaman')
+@section('header', '')
 
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
@@ -110,7 +110,7 @@
     </div>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped" id="tableRiwayat">
+        <table class="table table-bordered table-striped table-hover" id="tableRiwayat">
             <thead class="table-header">
                 <tr>
                     <th class="text-center">No</th>
