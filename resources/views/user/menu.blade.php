@@ -70,9 +70,9 @@
             1. Mahasiswa wajib mengisi formulir peminjaman sesuai dengan ketentuan yang berlaku.<br>
             2. Peminjaman hanya diperbolehkan untuk mahasiswa PTIK. Mahasiswa non-PTIK harus menyertakan surat peminjaman yang ditandatangani oleh dosen terkait.<br>
             3. Mahasiswa yang meminjam barang wajib menggunakan Kartu Mahasiswa.<br>
-            4. Barang yang dapat dipinjam meliputi peralatan praktikum seperti router, proyektor, access point, kabel LAN, dan sejenisnya, serta ruangan laboratorium seperti Lab A, Lab Jaringan, dan Lab Multimedia.<br>
+            4. Barang yang dapat dipinjam meliputi peralatan praktikum seperti router, proyektor, access point, kabel LAN, dan sejenisnya.<br>
             5. Peminjaman di luar kegiatan praktikum mata kuliah harus disertai surat peminjaman yang ditandatangani oleh Kepala Laboratorium.<br>
-            6. Peminjam bertanggung jawab atas barang atau ruangan yang dipinjam selama masa peminjaman. Jika terjadi kerusakan atau kehilangan, peminjam wajib mengganti barang sesuai dengan tipe dan spesifikasi yang sama.<br>
+            6. Peminjam bertanggung jawab atas barang yang dipinjam selama masa peminjaman. Jika terjadi kerusakan atau kehilangan, peminjam wajib mengganti barang sesuai dengan tipe dan spesifikasi yang sama.<br>
         </p>
     </div>
 

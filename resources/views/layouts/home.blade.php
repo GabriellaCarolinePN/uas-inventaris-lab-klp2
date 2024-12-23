@@ -25,7 +25,7 @@
                     <a class="nav-link custom-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link custom-link" href="{{ route('form') }}">Pemesanan</a>
+                    <a class="nav-link custom-link" href="{{ route('form') }}">Peminjaman</a>
                 </li>
             </ul>
             

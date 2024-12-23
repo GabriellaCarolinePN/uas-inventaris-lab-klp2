@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard Admin')
 
-@section('header', 'Welcome Admin')
+@section('header', '')
 
 @push('scripts')
     <script>
