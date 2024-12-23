@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Inventaris;
 use App\Models\Peminjam;
@@ -25,17 +26,48 @@ Route::post('/form-peminjaman/mahasiswa', [UserController::class, 'addPeminjaman
 Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin', function () {
         $today = date('Y-m-d');
-
+    
         $riwayatTerbaru = Peminjam::whereDate('created_at', $today)->count();
         $jumlahInventaris = Inventaris::count();
-
+    
+        $statistikRiwayat = Inventaris::with(['peminjaman' => function ($query) {
+            $query->selectRaw("inventory_id, date_format(created_at, '%Y-%m-%d') as date, count(*) as aggregate")
+                ->whereDate('created_at', '>=', now()->subDays(30))
+                ->groupBy('inventory_id', 'date');
+        }])->get();
+    
+        // Data untuk grafik
+        $datasets = [];
+        $colors = [
+            ['border' => 'rgb(255, 99, 132)', 'background' => 'rgba(255, 99, 132, 0.3)'],
+            ['border' => 'rgb(54, 162, 235)', 'background' => 'rgba(54, 162, 235, 0.3)'],
+            ['border' => 'rgb(75, 192, 192)', 'background' => 'rgba(75, 192, 192, 0.3)'],
+            ['border' => 'rgb(255, 206, 86)', 'background' => 'rgba(255, 206, 86, 0.3)'],
+            ['border' => 'rgb(153, 102, 255)', 'background' => 'rgba(153, 102, 255, 0.3)'],
+            ['border' => 'rgb(255, 159, 64)', 'background' => 'rgba(255, 159, 64, 0.3)'],
+        ];
+    
+        foreach ($statistikRiwayat as $index => $inventaris) {
+            $datasets[] = [
+                'label' => $inventaris->nama_alat,
+                'data' => $inventaris->peminjaman->pluck('aggregate')->toArray(),
+                'borderColor' => $colors[$index % count($colors)]['border'],
+                'backgroundColor' => $colors[$index % count($colors)]['background'],
+            ];
+        }
+    
+        $labels = $statistikRiwayat->pluck('peminjaman.*.date')->flatten()->unique()->values();
+    
         $data = [
+            'colors' => $colors,
             'riwayatTerbaru' => $riwayatTerbaru,
             'jumlahInventaris' => $jumlahInventaris,
+            'labels' => $labels,
+            'datasets' => $datasets,
         ];
-
+    
         return view('admin.dashboard', $data);
-    })->name('dashboard');
+    })->name('dashboard');    
 
     //Inventori
     Route::get('/admin/inventoris', [AdminController::class, 'inventoris'])->name('inventoris');

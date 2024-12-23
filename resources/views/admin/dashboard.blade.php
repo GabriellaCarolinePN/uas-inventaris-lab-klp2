@@ -4,6 +4,51 @@
 
 @section('header', 'Welcome Admin')
 
+@push('scripts')
+    <script>
+        const colors = @json($colors);
+        const labels = @json($labels);
+        const datasets = @json($datasets);
+
+        const data = {
+            labels: labels,
+            datasets: datasets,
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tanggal',
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Jumlah Alat Dipinjam',
+                        },
+                    },
+                },
+            },
+        };
+
+        const myChart = new Chart(
+            document.getElementById('chartPeminjaman'),
+            config
+        );
+    </script>
+@endpush
+
 @section('content')
 <div class="container py-4">
     <!-- Welcome Card -->
@@ -46,6 +91,13 @@
                     </div>
                 </div>
             </a>
+        </div>
+
+        <div class="card welcome-card mb-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Statistik Peminjaman Bulan Ini</h5>
+                <canvas id="chartPeminjaman"></canvas>
+            </div>
         </div>
     </div>
 @endsection

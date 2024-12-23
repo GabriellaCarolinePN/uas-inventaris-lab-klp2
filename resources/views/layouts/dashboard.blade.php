@@ -14,6 +14,7 @@
     <link href="{{ asset('css/admin/form-inventori.css') }}" rel="stylesheet">
     @stack('styles')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
