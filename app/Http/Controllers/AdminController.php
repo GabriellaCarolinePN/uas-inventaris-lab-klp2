@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function riwayatpeminjaman()
     {
-        $peminjaman = Peminjam::with('inventory')->get();
+        $peminjaman = Peminjam::with('inventory')->orderByDesc('created_at')->get();
         return view('admin.riwayat', compact('peminjaman'));
     }
 

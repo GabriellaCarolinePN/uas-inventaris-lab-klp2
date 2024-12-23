@@ -24,7 +24,7 @@
                     </div>
                     <div>
                         <h6 class="card-title">Inventaris</h6>
-                        <p class="card-text mb-1">Jumlah Item: <strong>120</strong></p>
+                        <p class="card-text mb-1">Jumlah Item: <strong>{{ $jumlahInventaris }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <h6 class="card-title">Riwayat</h6>
-                        <p class="card-text mb-1">Peminjam Hari Ini: <strong>15</strong></p>
+                        <p class="card-text mb-1">Peminjam Hari Ini: <strong>{{ $riwayatTerbaru }}</strong></p>
                     </div>
                 </div>
             </div>

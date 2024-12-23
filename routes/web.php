@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Inventaris;
+use App\Models\Peminjam;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
@@ -22,7 +24,17 @@ Route::post('/form-peminjaman/mahasiswa', [UserController::class, 'addPeminjaman
 //Akses admin
 Route::middleware(AdminMiddleware::class)->group(function () {
     Route::get('/admin', function () {
-        return view('admin.dashboard');
+        $today = date('Y-m-d');
+
+        $riwayatTerbaru = Peminjam::whereDate('created_at', $today)->count();
+        $jumlahInventaris = Inventaris::count();
+
+        $data = [
+            'riwayatTerbaru' => $riwayatTerbaru,
+            'jumlahInventaris' => $jumlahInventaris,
+        ];
+
+        return view('admin.dashboard', $data);
     })->name('dashboard');
 
     //Inventori
