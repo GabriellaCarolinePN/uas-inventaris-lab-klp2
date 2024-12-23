@@ -17,31 +17,35 @@
     <!-- Feature Cards and Chart -->
     <div class="row g-4">
         <div class="col-md-6">
-            <div class="card feature-card">
-                <div class="card-body d-flex align-items-center">
-                    <div class="me-3">
-                        <i class="icon bi bi-box-seam"></i>
-                    </div>
-                    <div>
-                        <h6 class="card-title">Inventaris</h6>
-                        <p class="card-text mb-1">Jumlah Item: <strong>{{ $jumlahInventaris }}</strong></p>
+            <a href="{{ route('inventoris') }}" class="text-decoration-none text-dark">
+                <div class="card feature-card">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="icon bi bi-box-seam"></i>
+                        </div>
+                        <div>
+                            <h6 class="card-title">Inventaris</h6>
+                            <p class="card-text mb-1">Jumlah Item: <strong>{{ $jumlahInventaris }}</strong></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-md-6">
-            <div class="card feature-card">
-                <div class="card-body d-flex align-items-center">
-                    <div class="me-3">
-                        <i class="icon bi bi-clock-history"></i>
-                    </div>
-                    <div>
-                        <h6 class="card-title">Riwayat</h6>
-                        <p class="card-text mb-1">Peminjam Hari Ini: <strong>{{ $riwayatTerbaru }}</strong></p>
+            <a href="{{ route('riwayat') }}" class="text-decoration-none text-dark">
+                <div class="card feature-card">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="icon bi bi-clock-history"></i>
+                        </div>
+                        <div>
+                            <h6 class="card-title">Riwayat</h6>
+                            <p class="card-text mb-1">Peminjam Hari Ini: <strong>{{ $riwayatTerbaru }}</strong></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 @endsection
