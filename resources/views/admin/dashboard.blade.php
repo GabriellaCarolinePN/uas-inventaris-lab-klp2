@@ -10,7 +10,7 @@
     <div class="card welcome-card mb-4">
         <div class="card-body text-center">
             <h5 class="card-title">Welcome Admin</h5>
-            <p class="card-text">Use the navigation panel to manage your data efficiently.</p>
+            <p class="card-text">Selamat datang di halaman Admin, tempat Anda dapat mengelola inventaris dan memperbarui riwayat peminjaman dengan mudah. <br> Gunakan fitur yang tersedia untuk memastikan segala proses berjalan lancar.</p>
         </div>
     </div>
 
