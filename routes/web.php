@@ -30,11 +30,25 @@ Route::middleware(AdminMiddleware::class)->group(function () {
         $riwayatTerbaru = Peminjam::whereDate('created_at', $today)->count();
         $jumlahInventaris = Inventaris::count();
     
-        $statistikRiwayat = Inventaris::with(['peminjaman' => function ($query) {
-            $query->selectRaw("inventory_id, date_format(created_at, '%Y-%m-%d') as date, count(*) as aggregate")
-                ->whereDate('created_at', '>=', now()->subDays(30))
-                ->groupBy('inventory_id', 'date');
+        $startDate = now()->subDays(7)->startOfDay();
+        $endDate = now()->endOfDay();
+    
+        $statistikRiwayat = Inventaris::with(['peminjaman' => function ($query) use ($startDate, $endDate) {
+            $query->selectRaw("
+                    inventory_id, 
+                    DATE(created_at) as date, 
+                    COUNT(*) as aggregate
+                ")
+                ->whereBetween('created_at', [$startDate, $endDate])
+                ->groupBy('inventory_id', 'date')
+                ->orderBy('date', 'asc');
         }])->get();
+    
+        // Buat array tanggal (labels) dari $startDate hingga $endDate
+        $labels = collect();
+        for ($date = $startDate; $date <= $endDate; $date->addDay()) {
+            $labels->push($date->format('Y-m-d'));
+        }
     
         // Data untuk grafik
         $datasets = [];
@@ -48,15 +62,19 @@ Route::middleware(AdminMiddleware::class)->group(function () {
         ];
     
         foreach ($statistikRiwayat as $index => $inventaris) {
+            $data = $labels->map(function ($label) use ($inventaris) {
+                // Cari jumlah peminjaman sesuai tanggal, atau 0 jika tidak ada data
+                $peminjaman = $inventaris->peminjaman->firstWhere('date', $label);
+                return $peminjaman ? $peminjaman->aggregate : 0;
+            });
+    
             $datasets[] = [
                 'label' => $inventaris->nama_alat,
-                'data' => $inventaris->peminjaman->pluck('aggregate')->toArray(),
+                'data' => $data->toArray(),
                 'borderColor' => $colors[$index % count($colors)]['border'],
                 'backgroundColor' => $colors[$index % count($colors)]['background'],
             ];
         }
-    
-        $labels = $statistikRiwayat->pluck('peminjaman.*.date')->flatten()->unique()->values();
     
         $data = [
             'colors' => $colors,
@@ -67,7 +85,9 @@ Route::middleware(AdminMiddleware::class)->group(function () {
         ];
     
         return view('admin.dashboard', $data);
-    })->name('dashboard');    
+    })->name('dashboard');
+    
+       
 
     //Inventori
     Route::get('/admin/inventoris', [AdminController::class, 'inventoris'])->name('inventoris');
