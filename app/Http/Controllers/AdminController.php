@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Models\Peminjam;
 use App\Models\Inventaris;
@@ -46,8 +45,7 @@ class AdminController extends Controller
             $inventaris = Inventaris::create($data);
         }
         catch(Exception $e){
-            Alert::error('Gagal!', 'Cek pada form inventoris apakah ada kesalahan yang terjadi');
-            return redirect()->back()->withError($e)->withInput();
+            return redirect()->back()->withError($e)->withInput()->with('error', 'Cek pada form inventoris apakah ada kesalahan yang terjadi');
         }
 
         return redirect()->route('inventoris')->with('success', 'Inventaris berhasil ditambahkan');
@@ -79,8 +77,6 @@ class AdminController extends Controller
             'jumlah' => $request->jumlah,
             'status_ketersediaan' => $request->jumlah > 0 ? 'tersedia' : 'tidak tersedia',
         ]);
-
-        Alert::success('Berhasil', 'Inventaris berhasil diperbarui');
 
         return redirect()->route('inventoris')->with('success', 'Inventaris berhasil diperbarui');
     }

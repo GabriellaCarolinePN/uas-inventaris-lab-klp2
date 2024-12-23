@@ -95,7 +95,7 @@
 
         <div class="card welcome-card mb-4">
             <div class="card-body text-center">
-                <h5 class="card-title">Statistik Peminjaman Bulan Ini</h5>
+                <h5 class="card-title">Statistik Peminjaman Minggu Ini</h5>
                 <canvas id="chartPeminjaman"></canvas>
             </div>
         </div>
