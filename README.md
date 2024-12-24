@@ -1,3 +1,6 @@
+## Nama Anggota Kelompok
+<p>1. Annisa Nur Chasidiyah (K3521010) -> BackEnd<br/>2. Gabriella Caroline Prihayu Ningsih (K3521030) -> Database<br/>3. Maharani Ladja Puwa (K3521078) -> FrontEnd</p>
+
 ## Demo Aplikasi
 
 <p align="center"><a href="https://youtu.be/IchIWBmSC3Y" target="_blank">Link Youtube Demo Penjelasan Aplikasi</a></p>

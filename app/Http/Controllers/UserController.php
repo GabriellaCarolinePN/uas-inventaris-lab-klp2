@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Models\Peminjam;
 use App\Models\Inventaris;
@@ -152,7 +151,6 @@ class UserController extends Controller
                 $peminjaman->update(['surat' => $nama_file]);
             }
         } catch (\Exception $e) {
-            Alert::error('Gagal!', 'Terjadi kesalahan pada sistem. Silakan coba lagi.');
             return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     
